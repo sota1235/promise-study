@@ -23,6 +23,8 @@ urls = [
   'https://google.co.jp'
 ]
 
+# HTML本文を取得するPromise
+# URLが間違っていたりすると失敗する
 getHtml = (url) ->
   debug "getHtml(#{url})"
   return new Promise (resolve, reject) ->
@@ -31,6 +33,8 @@ getHtml = (url) ->
         reject(err or "statusCode: #{res.statusCode}")
       resolve body
 
+# HTMLからタイトルを取得するPromise
+# HTMLじゃなければ失敗する
 getTitle = (html) ->
   debug "getTitle(html)"
   return new Bluebird (resolve, reject) ->
@@ -40,6 +44,7 @@ getTitle = (html) ->
       return
     reject 'title not found'
 
+# 音声読み上げするPromise
 speech = (txt) ->
   debug "speech(#{txt})"
   return new Promise (resolve, reject) ->
@@ -49,6 +54,7 @@ speech = (txt) ->
         return
       resolve(txt)
 
+# URLリストをeachで1つずつ処理する
 Bluebird.each urls, (url) ->
   getHtml url
   .then getTitle
@@ -56,6 +62,7 @@ Bluebird.each urls, (url) ->
   .then (title) ->
     return new Promise (resolve) ->
       debug "wait 3000 msec"
+      # 3秒待ってから次のURLの処理へ
       setTimeout ->
         debug "wait done"
         debug   "!!OK #{url} - #{title}"
@@ -65,6 +72,7 @@ Bluebird.each urls, (url) ->
     return new Promise (resolve, reject) ->
       debug "!!ERROR #{url} - #{err}"
       debug "wait 5000 msec for Error"
+      # どこかでエラーあったら5秒待つ
       setTimeout ->
         debug "wait done"
         resolve()
