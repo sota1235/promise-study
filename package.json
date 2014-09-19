@@ -13,9 +13,11 @@
   ],
   "dependencies": {
     "bluebird": "^2.3.2",
+    "cheerio": "^0.17.0",
     "coffee-script": "^1.8.0",
     "es6-promise": "^1.0.0",
-    "q": "^1.0.1"
+    "q": "^1.0.1",
+    "request": "^2.44.0"
   },
   "devDependencies": {
     "coffee-script": "^1.8.0"
