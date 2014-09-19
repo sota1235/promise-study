@@ -1,3 +1,5 @@
+## いろいろなPromiseライブラリを混ぜて使ってみる
+
 {Promise} = require 'es6-promise'
 # Promise = require 'q'
 # Promise = require 'bluebird'

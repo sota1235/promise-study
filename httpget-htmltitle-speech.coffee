@@ -1,3 +1,6 @@
+## HTMLを取得してtitleを取り出してsayで読み上げる
+## いろいろなPromiseライブラリを混ぜて使ってみる
+
 request = require 'request'
 cheerio = require 'cheerio'
 {exec} = require 'child_process'
