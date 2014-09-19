@@ -17,9 +17,9 @@ Bluebird = require 'bluebird'
 
 urls = [
   'http://shokai.org'
-  'そんなURLはない'
+  'そんなURLはない' # URLじゃない文字列
   'https://github.com'
-  'https://github.com/robots.txt'
+  'https://github.com/robots.txt' # HTMLが返ってこないURL
   'https://google.co.jp'
 ]
 
@@ -30,7 +30,7 @@ getHtml = (url) ->
   return new Promise (resolve, reject) ->
     request url, (err, res, body) ->
       if err or res.statusCode isnt 200
-        reject(err or "statusCode: #{res.statusCode}")
+        return reject(err or "statusCode: #{res.statusCode}")
       resolve body
 
 # HTMLからタイトルを取得するPromise
@@ -40,8 +40,7 @@ getTitle = (html) ->
   return new Bluebird (resolve, reject) ->
     $ = cheerio.load html
     if title = $('title').text()
-      resolve title
-      return
+      return resolve title
     reject 'title not found'
 
 # 音声読み上げするPromise
@@ -49,9 +48,7 @@ speech = (txt) ->
   debug "speech(#{txt})"
   return new Promise (resolve, reject) ->
     exec "say #{txt}", (err, stdout, stderr) ->
-      if err
-        reject(txt)
-        return
+      return reject(txt) if err
       resolve(txt)
 
 # URLリストをeachで1つずつ処理する
@@ -65,7 +62,7 @@ Bluebird.each urls, (url) ->
       # 3秒待ってから次のURLの処理へ
       setTimeout ->
         debug "wait done"
-        debug   "!!OK #{url} - #{title}"
+        debug "!!OK #{url} - #{title}"
         resolve()
       , 3000
   .catch (err) ->
