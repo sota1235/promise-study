@@ -1,4 +1,5 @@
-## いろいろなPromiseライブラリを混ぜて使ってみる
+## いろいろなPromiseライブラリを使ってみる
+## Qだけthrow new Errorが捕まえられなかった
 
 {Promise} = require 'es6-promise'
 # Promise = require 'q'
