@@ -4,7 +4,7 @@
   "description": "promise libraries study",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "coffeelint *.coffee"
   },
   "author": "Sho Hashimoto <hashimoto@shokai.org>",
   "license": "MIT",
@@ -21,7 +21,8 @@
     "request": "^2.44.0"
   },
   "devDependencies": {
-    "coffee-script": "^1.8.0"
+    "coffee-script": "^1.8.0",
+    "coffeelint": "^1.6.0"
   },
   "bugs": {
     "url": "https://github.com/shokai/promise-study/issues"
