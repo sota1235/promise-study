@@ -19,7 +19,7 @@ urls = [
 
 getHtml = (url) ->
   console.log "getHtml(#{url})"
-  return new Promise (resolve, reject) ->
+  return new Promise (resolve, reject) -> # es6-promise
     request url, (err, res, body) ->
       if err or res.statusCode isnt 200
         reject(err or "statusCode: #{res.statusCode}")
@@ -27,7 +27,7 @@ getHtml = (url) ->
 
 getTitle = (html) ->
   console.log "getTitle(html)"
-  return new Bluebird (resolve, reject) ->
+  return new Bluebird (resolve, reject) -> # Bluebirdを使う
     $ = cheerio.load html
     if title = $('title').text()
       resolve title
@@ -36,7 +36,7 @@ getTitle = (html) ->
 
 speech = (txt) ->
   console.log "speech(#{txt})"
-  return new Promise (resolve, reject) ->
+  return new Q.Promise (resolve, reject) -> # Qを使う
     exec "say #{txt}", (err, stdout, stderr) ->
       if err
         reject(txt)

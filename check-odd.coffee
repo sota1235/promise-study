@@ -1,8 +1,7 @@
 ## いろいろなPromiseライブラリを使ってみる
-## Qだけthrow new Errorが捕まえられなかった
 
 {Promise} = require 'es6-promise'
-# Promise = require 'q'
+# {Promise} = require 'q'
 # Promise = require 'bluebird'
 
 checkOdd = (num) ->
