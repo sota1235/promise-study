@@ -18,7 +18,8 @@
     "debug": "^2.0.0",
     "es6-promise": "^1.0.0",
     "q": "^1.0.1",
-    "request": "^2.44.0"
+    "request": "^2.44.0",
+    "iconv": "*"
   },
   "devDependencies": {
     "coffee-script": "^1.8.0",
