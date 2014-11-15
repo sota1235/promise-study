@@ -6,6 +6,9 @@
 - [Bluebird](https://github.com/petkaantonov/bluebird)
 - [Q](https://github.com/kriskowal/q)
 
+shokaiさんのリポジトリをforkしました
+
+自分で追加した実験たちは```my_study```フォルダに入っています
 
 ## Memo
 
